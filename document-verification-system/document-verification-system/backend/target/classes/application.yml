@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: document-verification-system
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/doc_verifier
+    username: postgres
+    password: post123
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: false
+
+  web:
+    cors:
+      allowed-origins: "http://localhost:3000,http://127.0.0.1:3000"
+      allowed-methods: "GET,POST,PUT,DELETE,OPTIONS"
+      allowed-headers: "*"
+      allow-credentials: true
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+server:
+  port: 8090
+  servlet:
+    context-path: /api
+
+blockchain:
+  ganache-url: http://127.0.0.1:7545
+  contract-address: "0xDE91da00dcC6131DF06320176D7Fb055740aced2"
+  private-key: "0x1ad03d3cb00a56475a55ad3ac9d70977d14954ee4d23070c0bc0304431331e2c"
+  gas-price: 1000000000
+  gas-limit: 3000000
+
+ipfs:
+  host: 127.0.0.1
+  port: 5001
+  protocol: http
+
+logging:
+  level:
+    root: INFO
+    com.docverify: DEBUG
